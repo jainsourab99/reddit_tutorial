@@ -4,10 +4,13 @@
 import 'package:flutter/material.dart';
 import 'package:reddit_tutorial/feature/Home/home_Screen.dart';
 import 'package:reddit_tutorial/feature/auth/screens/login_screen.dart';
+import 'package:reddit_tutorial/feature/community/screens/add_mods_screen.dart';
 import 'package:reddit_tutorial/feature/community/screens/community_screen.dart';
 import 'package:reddit_tutorial/feature/community/screens/create_community.dart';
 import 'package:reddit_tutorial/feature/community/screens/edit_community_screen.dart';
 import 'package:reddit_tutorial/feature/community/screens/mod_tools_screen.dart';
+import 'package:reddit_tutorial/feature/user_profile/screens/edit_profile_screen.dart';
+import 'package:reddit_tutorial/feature/user_profile/screens/user_profile_screen.dart';
 import 'package:routemaster/routemaster.dart';
 
 final loggedOutRoute = RouteMap(routes: {
@@ -16,26 +19,43 @@ final loggedOutRoute = RouteMap(routes: {
       ),
 });
 
-final loggedInRoute = RouteMap(routes: {
-  "/": (_) => const MaterialPage(
-        child: HomeScreen(),
-      ),
-  "/create_community": (_) => const MaterialPage(
-        child: CreateCommunityScreen(),
-      ),
-  "/r/:name": (route) => MaterialPage(
-        child: CommunityScreen(
-          name: route.pathParameters["name"]!,
+final loggedInRoute = RouteMap(
+  routes: {
+    "/": (_) => const MaterialPage(
+          child: HomeScreen(),
         ),
-      ),
-  "/mod-tools/:name": (routeData) => MaterialPage(
-        child: ModToolsScreen(
-          name: routeData.pathParameters["name"]!,
+    "/create_community": (_) => const MaterialPage(
+          child: CreateCommunityScreen(),
         ),
-      ),
-  "/edit-community/:name": (routeData) => MaterialPage(
-        child: EditCommunityScreen(
-          name: routeData.pathParameters["name"]!,
+    "/r/:name": (route) => MaterialPage(
+          child: CommunityScreen(
+            name: route.pathParameters["name"]!,
+          ),
         ),
-      ),
-});
+    "/mod-tools/:name": (routeData) => MaterialPage(
+          child: ModToolsScreen(
+            name: routeData.pathParameters["name"]!,
+          ),
+        ),
+    "/edit-community/:name": (routeData) => MaterialPage(
+          child: EditCommunityScreen(
+            name: routeData.pathParameters["name"]!,
+          ),
+        ),
+    "/add-mods/:name": (routeData) => MaterialPage(
+          child: AddModsScreen(
+            name: routeData.pathParameters["name"]!,
+          ),
+        ),
+    "/u/:uid": (routeData) => MaterialPage(
+          child: USerProfileScreen(
+            uid: routeData.pathParameters["uid"]!,
+          ),
+        ),
+    "/edit-profile/:uid": (routeData) => MaterialPage(
+          child: EditProfileScreen(
+            uid: routeData.pathParameters["uid"]!,
+          ),
+        ),
+  },
+);

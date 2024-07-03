@@ -40,7 +40,7 @@ class HomeScreen extends ConsumerWidget {
             icon: const Icon(Icons.search),
           ),
           Builder(
-            builder: (builder) {
+            builder: (context) {
               return IconButton(
                 icon: CircleAvatar(
                   backgroundImage: NetworkImage(user!.profilePic),

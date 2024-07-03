@@ -22,7 +22,6 @@ class ProfileDrawer extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final user = ref.watch(userProvider)!;
-
     return Drawer(
       child: SafeArea(
         child: Column(
